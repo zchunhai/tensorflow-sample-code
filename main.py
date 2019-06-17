@@ -204,7 +204,7 @@ def train():
   #                               device_filters=["/job:ps", "/job:worker/task:%d" % FLAGS.worker_index])
 
   with sv.prepare_or_wait_for_session(server.target) as sess:
-    train_writer = tf.summary.FileWriter(FLAGS.output_dir) + '/train', sess.graph)
+    train_writer = tf.summary.FileWriter(FLAGS.output_dir + '/train', sess.graph)
     test_writer = tf.summary.FileWriter(FLAGS.output_dir + '/test')
     # Train the model, and also write summaries.
     # Every 10th step, measure test-set accuracy, and write test summaries
